@@ -9,5 +9,6 @@ BOARD1 = (
 def test_row_string():
     assert hinter.row_string(BOARD1, 1) == '..7....12'
 
-# def test_col_string(self):
-#    assertEquals(hinter.col_string(BOARD1, 10), '..7....12')
+
+def test_col_string():
+    assert hinter.col_string(BOARD1, 2) == '.7......9'
