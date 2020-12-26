@@ -12,3 +12,23 @@ def test_row_string():
 
 def test_col_string():
     assert hinter.col_string(BOARD1, 2) == '.7......9'
+
+
+def test_square_string_00():
+    assert hinter.square_string(BOARD1, 0, 0) == '46...7...'
+
+
+def test_square_string_22():
+    assert hinter.square_string(BOARD1, 2, 2) == '46...7...'
+
+
+def test_square_string_34():
+    assert hinter.square_string(BOARD1, 3, 4) == '8...4...6'
+
+
+def test_possibilities_34():
+    assert hinter.possibilities(BOARD1, 3, 4) == '579'
+
+
+def test_find_one_possibility():
+    assert hinter.find_one_possibility(BOARD1) == (1, 0, '8')
