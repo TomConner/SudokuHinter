@@ -51,6 +51,8 @@ def find_one_possibility(board):
                 poss_list = possibilities(board, row_num, col_num)
                 if len(poss_list) == 1:
                     return row_num, col_num, poss_list[0]
+    # no one-possibility findings
+    return None, None, None
 
 
 def board_set(board, row_num, col_num, number):
@@ -61,4 +63,18 @@ def board_set(board, row_num, col_num, number):
 
 def find_hint_one_possibility(board):
     row_num, col_num, number = find_one_possibility(board)
-    return board_set(board, row_num, col_num, number)
+    if row_num is not None:
+        return board_set(board, row_num, col_num, number)
+    else:
+        return None
+
+
+def solve(board):
+    result = [board]
+    while True:
+        next_board = find_hint_one_possibility(board)
+        if next_board is None or next_board == board:
+            break
+        board = next_board
+        result.append(board)
+    return result

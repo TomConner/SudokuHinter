@@ -17,6 +17,14 @@
             "request": "launch",
             "program": "${file}",
             "console": "integratedTerminal"
+        },
+        {
+            "name": "Python: solve",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/src/main.py",
+            "console": "integratedTerminal",
+            "args": ["46.1..5....7....12....84.6..2.8....33...4...99....6.2..7.91....58....2....9..5.81"]
         }
     ]
 }
