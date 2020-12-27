@@ -51,3 +51,14 @@ def find_one_possibility(board):
                 poss_list = possibilities(board, row_num, col_num)
                 if len(poss_list) == 1:
                     return row_num, col_num, poss_list[0]
+
+
+def board_set(board, row_num, col_num, number):
+    index = row_num*9 + col_num
+    newboard = board[0:index] + number + board[index+1:]
+    return newboard
+
+
+def find_hint_one_possibility(board):
+    row_num, col_num, number = find_one_possibility(board)
+    return board_set(board, row_num, col_num, number)
