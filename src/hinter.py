@@ -28,6 +28,24 @@ def square_string(board, row_num, col_num):
     return result
 
 
+def row_iter(row_num):
+    for col_num in range(9):
+        yield row_num, col_num
+
+
+def col_iter(col_num):
+    for row_num in range(9):
+        yield row_num, col_num
+
+
+def square_iter(row_num, col_num):
+    start_row_num = int(row_num / 3) * 3
+    start_col_num = int(col_num / 3) * 3
+    for row_num in range(start_row_num, start_row_num+3):
+        for col_num in range(start_col_num, start_col_num+3):
+            yield row_num, col_num
+
+
 def possibilities(board, row_num, col_num):
     result = ''
     for num in '123456789':
