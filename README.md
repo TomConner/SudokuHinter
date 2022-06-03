@@ -1,5 +1,7 @@
 # Sudoku Hinter
 
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=TomConner_SudokuHinter&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=TomConner_SudokuHinter)
+
 ## Development
 
 Install Python 3.
