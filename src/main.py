@@ -1,3 +1,5 @@
+"""Parse arguments and call hinter"""
+
 import argparse
 import hinter
 

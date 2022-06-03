@@ -166,32 +166,36 @@ def find_hint_elimination_within_rcs(board):
         # process one row, column, or square
         poss_lists, poss_values = get_poss_lists(board, iter)
 
-        # find a value that can go in exactly one cell within this rcs
-        for value in poss_values:
-            value_possible_position_count = 0
-            for row_num, col_num, poss_list in poss_lists:
-                if value in poss_list:
-                    value_possible_position_count += 1
-                    last_matching_row = row_num
-                    last_matching_col = col_num
-                if value_possible_position_count > 1:
-                    # stop considering this value (> 1 possible cell)
-                    break  # out of poss_lists loop
-            if value_possible_position_count > 1:
-                # stop considering this value (> 1 possible cell)
-                break  # out of value loop
-            if value_possible_position_count == 1:
-                # we have found a value that fits in exactly one cell
-                result = board_set(
-                    board, last_matching_row, last_matching_col, value
-                )
-                # mission accomplished, just return the one hint and be done
-                break  # out of value loop
+        result = compute_rcs_result(board, poss_lists, poss_values)
 
         if result is not None:
             break  # out of iter loop
 
     return result
+
+
+def compute_rcs_result(board, poss_lists, poss_values):
+    # find a value that can go in exactly one cell within this rcs
+    for value in poss_values:
+        value_possible_position_count = 0
+        for row_num, col_num, poss_list in poss_lists:
+            if value in poss_list:
+                value_possible_position_count += 1
+                last_matching_row = row_num
+                last_matching_col = col_num
+            if value_possible_position_count > 1:
+                # stop considering this value (> 1 possible cell)
+                break  # out of poss_lists loop
+        if value_possible_position_count > 1:
+            # stop considering this value (> 1 possible cell)
+            break  # out of value loop
+        if value_possible_position_count == 1:
+            # we have found a value that fits in exactly one cell
+            result = board_set(
+                    board, last_matching_row, last_matching_col, value
+                )
+            # mission accomplished, just return the one hint and be done
+            return result
 
 
 def find_hint(board):
