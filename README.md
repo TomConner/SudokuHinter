@@ -8,8 +8,6 @@ Install Python 3.
 
 Make a virtual environment `env` according to `requirements.txt`.
 
-Tests are in `test`.
-
 ## Usage
 
 Command line: Run `src/main.py`.

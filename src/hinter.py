@@ -1,5 +1,5 @@
 import logging
-
+import re
 
 logging.basicConfig(level=logging.DEBUG)
 
@@ -213,6 +213,7 @@ def find_hint(board):
 
 
 def solve1(board):
+    validate_board_string(board)
     result = [board]
     while True:
         next_board = find_hint_one_possibility(board)
@@ -224,6 +225,7 @@ def solve1(board):
 
 
 def solve(board):
+    validate_board_string(board)
     result = [board]
     while True:
         next_board = find_hint(board)
@@ -232,3 +234,12 @@ def solve(board):
         board = next_board
         result.append(board)
     return result
+
+
+class BoardStringException(Exception):
+    pass
+
+
+def validate_board_string(board):
+    if not re.compile('[1-9\.]{81}').match(board):
+        raise BoardStringException("Specify 81-character board string with . for empty cells, and no line breaks")
