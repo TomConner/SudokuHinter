@@ -241,5 +241,7 @@ class BoardStringException(Exception):
 
 
 def validate_board_string(board):
-    if not re.compile('[1-9\.]{81}').match(board):
-        raise BoardStringException("Specify 81-character board string with . for empty cells, and no line breaks")
+    if not re.compile('[1-9.]{81}').match(board):
+        raise BoardStringException(
+            "Specify 81-character board string with . for " +
+            "empty cells, and no line breaks")
